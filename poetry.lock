@@ -1,0 +1,159 @@
+[[package]]
+name = "cloudpickle"
+version = "1.6.0"
+description = "Extended pickling support for Python objects"
+category = "main"
+optional = false
+python-versions = ">=3.5"
+
+[[package]]
+name = "colorama"
+version = "0.4.6"
+description = "Cross-platform colored terminal text."
+category = "main"
+optional = false
+python-versions = "!=3.0.*,!=3.1.*,!=3.2.*,!=3.3.*,!=3.4.*,!=3.5.*,!=3.6.*,>=2.7"
+
+[[package]]
+name = "gym"
+version = "0.19.0"
+description = "The OpenAI Gym: A toolkit for developing and comparing your reinforcement learning agents."
+category = "main"
+optional = false
+python-versions = ">=3.6"
+
+[package.dependencies]
+cloudpickle = ">=1.2.0,<1.7.0"
+numpy = ">=1.18.0"
+
+[package.extras]
+all = ["atari-py (==0.2.6)", "box2d-py (>=2.3.5,<2.4.0)", "imageio", "mujoco_py (>=1.50,<2.0)", "opencv-python (>=3)", "pyglet (>=1.4.0)", "scipy"]
+atari = ["atari-py (==0.2.6)", "opencv-python (>=3)"]
+box2d = ["box2d-py (>=2.3.5,<2.4.0)", "pyglet (>=1.4.0)"]
+classic_control = ["pyglet (>=1.4.0)"]
+mujoco = ["imageio", "mujoco_py (>=1.50,<2.0)"]
+nomujoco = ["atari-py (==0.2.6)", "box2d-py (>=2.3.5,<2.4.0)", "opencv-python (>=3)", "pyglet (>=1.4.0)", "scipy"]
+robotics = ["imageio", "mujoco_py (>=1.50,<2.0)"]
+toy_text = ["scipy"]
+
+[[package]]
+name = "gym-super-mario-bros"
+version = "7.4.0"
+description = "Super Mario Bros. for OpenAI Gym"
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+nes-py = ">=8.1.4"
+
+[[package]]
+name = "nes-py"
+version = "8.1.4"
+description = "An NES Emulator and OpenAI Gym interface"
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+gym = ">=0.17.2"
+numpy = ">=1.18.5"
+pyglet = ">=1.5.5"
+tqdm = ">=4.32.2"
+
+[[package]]
+name = "numpy"
+version = "1.24.4"
+description = "Fundamental package for array computing in Python"
+category = "main"
+optional = false
+python-versions = ">=3.8"
+
+[[package]]
+name = "pyglet"
+version = "2.0.14"
+description = "pyglet is a cross-platform games and multimedia package."
+category = "main"
+optional = false
+python-versions = ">=3.8"
+
+[[package]]
+name = "tqdm"
+version = "4.66.2"
+description = "Fast, Extensible Progress Meter"
+category = "main"
+optional = false
+python-versions = ">=3.7"
+
+[package.dependencies]
+colorama = {version = "*", markers = "platform_system == \"Windows\""}
+
+[package.extras]
+dev = ["pytest (>=6)", "pytest-cov", "pytest-timeout", "pytest-xdist"]
+notebook = ["ipywidgets (>=6)"]
+slack = ["slack-sdk"]
+telegram = ["requests"]
+
+[metadata]
+lock-version = "1.1"
+python-versions = "3.8.18"
+content-hash = "f21c72b3e97df69cf5a008e8dd98163582b5b722d2e3076baac9a42cf70bebc0"
+
+[metadata.files]
+cloudpickle = [
+    {file = "cloudpickle-1.6.0-py3-none-any.whl", hash = "sha256:3a32d0eb0bc6f4d0c57fbc4f3e3780f7a81e6fee0fa935072884d58ae8e1cc7c"},
+    {file = "cloudpickle-1.6.0.tar.gz", hash = "sha256:9bc994f9e9447593bd0a45371f0e7ac7333710fcf64a4eb9834bf149f4ef2f32"},
+]
+colorama = [
+    {file = "colorama-0.4.6-py2.py3-none-any.whl", hash = "sha256:4f1d9991f5acc0ca119f9d443620b77f9d6b33703e51011c16baf57afb285fc6"},
+    {file = "colorama-0.4.6.tar.gz", hash = "sha256:08695f5cb7ed6e0531a20572697297273c47b8cae5a63ffc6d6ed5c201be6e44"},
+]
+gym = [
+    {file = "gym-0.19.0.tar.gz", hash = "sha256:940069b983806e1ccc400fa6d47b4e34e462accf6a4fb0acb0a5e509ad0f502d"},
+]
+gym-super-mario-bros = [
+    {file = "gym_super_mario_bros-7.4.0-py3-none-any.whl", hash = "sha256:5aa094115a32ed3d7f2eb044bc24486888af4f878695c9f26c7383a80c744602"},
+    {file = "gym_super_mario_bros-7.4.0.tar.gz", hash = "sha256:9330e6e4f75b4405125abffb35bf1338b9027d2d87e7d4504e2cf05269541ac7"},
+]
+nes-py = [
+    {file = "nes_py-8.1.4-cp37-cp37m-macosx_10_15_x86_64.whl", hash = "sha256:0cb8dcfe03260bcc751b662ab9ef6e1cc96f414f7d09ddc247846d20ee2bf5fd"},
+    {file = "nes_py-8.1.4.tar.gz", hash = "sha256:cf290c00d74fba33033ce62907c994d51b38f1f4f4f6934367d5ecc8e775ad17"},
+]
+numpy = [
+    {file = "numpy-1.24.4-cp310-cp310-macosx_10_9_x86_64.whl", hash = "sha256:c0bfb52d2169d58c1cdb8cc1f16989101639b34c7d3ce60ed70b19c63eba0b64"},
+    {file = "numpy-1.24.4-cp310-cp310-macosx_11_0_arm64.whl", hash = "sha256:ed094d4f0c177b1b8e7aa9cba7d6ceed51c0e569a5318ac0ca9a090680a6a1b1"},
+    {file = "numpy-1.24.4-cp310-cp310-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:79fc682a374c4a8ed08b331bef9c5f582585d1048fa6d80bc6c35bc384eee9b4"},
+    {file = "numpy-1.24.4-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:7ffe43c74893dbf38c2b0a1f5428760a1a9c98285553c89e12d70a96a7f3a4d6"},
+    {file = "numpy-1.24.4-cp310-cp310-win32.whl", hash = "sha256:4c21decb6ea94057331e111a5bed9a79d335658c27ce2adb580fb4d54f2ad9bc"},
+    {file = "numpy-1.24.4-cp310-cp310-win_amd64.whl", hash = "sha256:b4bea75e47d9586d31e892a7401f76e909712a0fd510f58f5337bea9572c571e"},
+    {file = "numpy-1.24.4-cp311-cp311-macosx_10_9_x86_64.whl", hash = "sha256:f136bab9c2cfd8da131132c2cf6cc27331dd6fae65f95f69dcd4ae3c3639c810"},
+    {file = "numpy-1.24.4-cp311-cp311-macosx_11_0_arm64.whl", hash = "sha256:e2926dac25b313635e4d6cf4dc4e51c8c0ebfed60b801c799ffc4c32bf3d1254"},
+    {file = "numpy-1.24.4-cp311-cp311-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:222e40d0e2548690405b0b3c7b21d1169117391c2e82c378467ef9ab4c8f0da7"},
+    {file = "numpy-1.24.4-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:7215847ce88a85ce39baf9e89070cb860c98fdddacbaa6c0da3ffb31b3350bd5"},
+    {file = "numpy-1.24.4-cp311-cp311-win32.whl", hash = "sha256:4979217d7de511a8d57f4b4b5b2b965f707768440c17cb70fbf254c4b225238d"},
+    {file = "numpy-1.24.4-cp311-cp311-win_amd64.whl", hash = "sha256:b7b1fc9864d7d39e28f41d089bfd6353cb5f27ecd9905348c24187a768c79694"},
+    {file = "numpy-1.24.4-cp38-cp38-macosx_10_9_x86_64.whl", hash = "sha256:1452241c290f3e2a312c137a9999cdbf63f78864d63c79039bda65ee86943f61"},
+    {file = "numpy-1.24.4-cp38-cp38-macosx_11_0_arm64.whl", hash = "sha256:04640dab83f7c6c85abf9cd729c5b65f1ebd0ccf9de90b270cd61935eef0197f"},
+    {file = "numpy-1.24.4-cp38-cp38-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:a5425b114831d1e77e4b5d812b69d11d962e104095a5b9c3b641a218abcc050e"},
+    {file = "numpy-1.24.4-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:dd80e219fd4c71fc3699fc1dadac5dcf4fd882bfc6f7ec53d30fa197b8ee22dc"},
+    {file = "numpy-1.24.4-cp38-cp38-win32.whl", hash = "sha256:4602244f345453db537be5314d3983dbf5834a9701b7723ec28923e2889e0bb2"},
+    {file = "numpy-1.24.4-cp38-cp38-win_amd64.whl", hash = "sha256:692f2e0f55794943c5bfff12b3f56f99af76f902fc47487bdfe97856de51a706"},
+    {file = "numpy-1.24.4-cp39-cp39-macosx_10_9_x86_64.whl", hash = "sha256:2541312fbf09977f3b3ad449c4e5f4bb55d0dbf79226d7724211acc905049400"},
+    {file = "numpy-1.24.4-cp39-cp39-macosx_11_0_arm64.whl", hash = "sha256:9667575fb6d13c95f1b36aca12c5ee3356bf001b714fc354eb5465ce1609e62f"},
+    {file = "numpy-1.24.4-cp39-cp39-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:f3a86ed21e4f87050382c7bc96571755193c4c1392490744ac73d660e8f564a9"},
+    {file = "numpy-1.24.4-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:d11efb4dbecbdf22508d55e48d9c8384db795e1b7b51ea735289ff96613ff74d"},
+    {file = "numpy-1.24.4-cp39-cp39-win32.whl", hash = "sha256:6620c0acd41dbcb368610bb2f4d83145674040025e5536954782467100aa8835"},
+    {file = "numpy-1.24.4-cp39-cp39-win_amd64.whl", hash = "sha256:befe2bf740fd8373cf56149a5c23a0f601e82869598d41f8e188a0e9869926f8"},
+    {file = "numpy-1.24.4-pp38-pypy38_pp73-macosx_10_9_x86_64.whl", hash = "sha256:31f13e25b4e304632a4619d0e0777662c2ffea99fcae2029556b17d8ff958aef"},
+    {file = "numpy-1.24.4-pp38-pypy38_pp73-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:95f7ac6540e95bc440ad77f56e520da5bf877f87dca58bd095288dce8940532a"},
+    {file = "numpy-1.24.4-pp38-pypy38_pp73-win_amd64.whl", hash = "sha256:e98f220aa76ca2a977fe435f5b04d7b3470c0a2e6312907b37ba6068f26787f2"},
+    {file = "numpy-1.24.4.tar.gz", hash = "sha256:80f5e3a4e498641401868df4208b74581206afbee7cf7b8329daae82676d9463"},
+]
+pyglet = [
+    {file = "pyglet-2.0.14-py3-none-any.whl", hash = "sha256:483b9f8be0314c615490178ab49b10b0b07cb8691f565924aace433e60047ec3"},
+    {file = "pyglet-2.0.14.tar.gz", hash = "sha256:9b3bef1532395d88600db115b2eea8c345d2851be48ad8ac64b152b16f089777"},
+]
+tqdm = [
+    {file = "tqdm-4.66.2-py3-none-any.whl", hash = "sha256:1ee4f8a893eb9bef51c6e35730cebf234d5d0b6bd112b0271e10ed7c24a02bd9"},
+    {file = "tqdm-4.66.2.tar.gz", hash = "sha256:6cd52cdf0fef0e0f543299cfc96fec90d7b8a7e88745f411ec33eb44d5ed3531"},
+]
