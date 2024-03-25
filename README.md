@@ -1,7 +1,7 @@
 # RL-Sonic
 
 ## Description
-This repository contains a reinforcement learning project focused on the Sonic the Hedgehog game. The aim is to develop an AI agent capable of playing Sonic, using reinforcement learning techniques and algorithms.
+This repository contains a reinforcement learning project focused on the Super Mario Bros game. The aim is to develop an AI agent capable of playing the game, using reinforcement learning techniques and algorithms.
 
 ## Environment Setup
 
