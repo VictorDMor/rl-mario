@@ -1,0 +1,11 @@
+1. Let's have a working agent
+2. Scientific paper writing
+    - Introduction, methodology
+    - Analogy with self-driving cars
+    - Problem presentation
+    - RL algorithm used
+    - Results & Future Work
+3. If we have time, alternative algorithms to compare
+    - Genetic algorithms
+    - Brute-force algorithms
+    - Create checkpoints to compare time complexity vs agent

@@ -1,4 +1,4 @@
-# RL-Sonic
+# RL-Mario
 
 ## Description
 This repository contains a reinforcement learning project focused on the Super Mario Bros game. The aim is to develop an AI agent capable of playing the game, using reinforcement learning techniques and algorithms.
@@ -15,7 +15,7 @@ Before you begin, ensure you have installed:
 1. Clone the repository to your local machine:
 
 `git clone https://github.com/victordmor/rl-mario.git`
-`cd rl-sonic`
+`cd rl-mario`
 
 
 2. Install the project dependencies using Poetry:
