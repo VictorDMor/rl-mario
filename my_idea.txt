@@ -1,2 +1,0 @@
-- Have a dictionary for every frame
-- 

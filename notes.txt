@@ -1,0 +1,9 @@
+- X,Y Q-table doesn't work because of enemies? We should test it more.
+
+Using only the (x, y) coordinates as the state in your Q-table might be too simplistic for a game like Super Mario Bros,
+which has dynamic elements such as moving enemies. The (x, y) coordinates don't capture information about the enemies, 
+so the agent might not learn how to interact with them effectively.
+
+For example, if there's an enemy at a certain (x, y) location in one episode and not in another, the agent will treat 
+these situations as the same because it only looks at the (x, y) coordinates. This could lead to the agent making suboptimal 
+decisions, like jumping when there's no enemy or not jumping when there is an enemy.
