@@ -1,0 +1,24 @@
+# 2024-04-07 6:33PM
+
+self.exploration_rate = 1
+self.exploration_rate_decay = 0.99999975
+self.exploration_rate_min = 0.1
+self.curr_step = 0
+
+self.save_every = 5e5  # no. of experiences between saving Mario Net
+
+# Memory and recall
+self.memory = TensorDictReplayBuffer(storage=LazyMemmapStorage(100000, device=torch.device("cpu")))
+self.batch_size = 32
+
+# Estimate and target gamma
+self.gamma = 0.9
+
+# Loss function and optimizer
+self.optimizer = torch.optim.Adam(self.net.parameters(), lr=0.00025)
+self.loss_fn = torch.nn.SmoothL1Loss()
+
+# Training hyperparameters
+self.burnin = 1e4  # min. experiences before training
+self.learn_every = 3  # no. of experiences between updates to Q_online
+self.sync_every = 1e4  # no. of experiences between Q_target & Q_online sync

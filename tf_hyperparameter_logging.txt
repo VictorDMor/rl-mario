@@ -1,0 +1,7 @@
+First config
+    self.gamma = 0.95  # discount rate for future rewards
+    self.epsilon = 1.0  # exploration rate: start at 100%
+    self.epsilon_min = 0.01  # minimum exploration probability
+    self.epsilon_decay = 0.995  # exponential decay rate for exploration prob
+    batch_size = 32
+    

@@ -22,6 +22,8 @@ Before you begin, ensure you have installed:
 
 `poetry install`
 
+Install Tensorflow separately in pip install tensorflow
+
 This will create a virtual environment and install all the necessary dependencies for the project.
 
 ### Running the Project
