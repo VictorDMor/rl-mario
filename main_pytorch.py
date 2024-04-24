@@ -39,20 +39,22 @@ if __name__ == '__main__':
 
     env.reset()
     next_state, reward, done, trunc, info = env.step(action=0)
-    print(f"{next_state.shape},\n {reward},\n {done},\n {info}")
 
+    print(f"Checkpoint step: {checkpoint_step}")
+    print(f"Render mode: {render_mode}")
+    print(f"Reward strategy: {reward_strategy}")
+    
     env = SkipFrame(env, skip=4)
     env = GrayScaleObservation(env)
 
     if reward_strategy != 'legacy':
         env = CustomRewardWrapper(env, reward_strategy)
-        
+
     env = ResizeObservation(env, shape=84)
     env = FrameStack(env, num_stack=4)
 
     use_cuda = torch.cuda.is_available()
     print(f"Using CUDA: {use_cuda}")
-    print()
 
     save_dir = Path("checkpoints") / f"{datetime.datetime.now().strftime('%Y-%m-%dT%H-%M-%S')} - {reward_strategy}"
     save_model_dir = Path("model_checkpoints") / reward_strategy
