@@ -29,7 +29,7 @@ if __name__ == '__main__':
     except IndexError:
         reward_strategy = 'hybrid'
 
-    env = gym_super_mario_bros.make("SuperMarioBros-1-1-v0", render_mode=render_mode, apply_api_compatibility=True)
+    env = gym_super_mario_bros.make("SuperMarioBros-1-1-v3", render_mode=render_mode, apply_api_compatibility=True)
 
     # Limit the action-space to
     #   0. walk right
@@ -43,7 +43,7 @@ if __name__ == '__main__':
     print(f"Checkpoint step: {checkpoint_step}")
     print(f"Render mode: {render_mode}")
     print(f"Reward strategy: {reward_strategy}")
-    
+
     env = SkipFrame(env, skip=4)
     env = GrayScaleObservation(env)
 

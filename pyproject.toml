@@ -6,18 +6,17 @@ authors = ["Your Name <you@example.com>"]
 package-mode = false
 
 [tool.poetry.dependencies]
-python = "3.9.18"
+python = "3.10.14"
 gym-super-mario-bros = "^7.4.0"
 pyglet = "^2.0.14"
 stable-baselines3 = "^2.3.0"
 opencv-python = "^4.9.0"
 gym = "0.26.0"
 tensorflow = "2.14.0"
-tensorflow-metal = "^1.1.0"
 tensordict = "0.3.0"
 torchrl = "0.3.0"
-torch = "2.2.2"
-torchvision = "^0.17.2"
+torch = "2.3.0"
+torchvision = "^0.18.0"
 
 
 [build-system]

@@ -43,6 +43,8 @@ class Mario:
         self.sync_every = 1e4  # no. of experiences between Q_target & Q_online sync
         self.checkpoint_number = checkpoint_number
 
+        torch.backends.cudnn.benchmark = True
+
     def act(self, state):
         """
         Given a state, choose an epsilon-greedy action and update value of step.
