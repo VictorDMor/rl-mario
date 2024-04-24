@@ -7,7 +7,7 @@ from torchrl.data import TensorDictReplayBuffer, LazyMemmapStorage
 
 
 class Mario:
-    def __init__(self, state_dim, action_dim, save_model_dir):
+    def __init__(self, state_dim, action_dim, save_model_dir, checkpoint_number=0):
         self.state_dim = state_dim
         self.action_dim = action_dim
         self.save_model_dir = save_model_dir
@@ -23,7 +23,7 @@ class Mario:
         self.exploration_rate_min = 0.1
         self.curr_step = 0
 
-        self.save_every = 2e4  # no. of experiences between saving Mario Net
+        self.save_every = 4e4  # no. of experiences between saving Mario Net
 
         # Memory and recall
         self.memory = TensorDictReplayBuffer(
@@ -41,6 +41,7 @@ class Mario:
         self.burnin = 1e4  # min. experiences before training
         self.learn_every = 3  # no. of experiences between updates to Q_online
         self.sync_every = 1e4  # no. of experiences between Q_target & Q_online sync
+        self.checkpoint_number = checkpoint_number
 
     def act(self, state):
         """
@@ -160,9 +161,10 @@ class Mario:
         return (td_est.mean().item(), loss)
 
     def save(self):
+        new_checkpoint = self.checkpoint_number + 1
         save_path = (
             self.save_model_dir /
-            f"mario_net_{int(self.curr_step // self.save_every)}.chkpt"
+            f"mario_net_{new_checkpoint}.chkpt"
         )
         torch.save(
             dict(model=self.net.state_dict(),
@@ -170,6 +172,7 @@ class Mario:
             save_path,
         )
         print(f"MarioNet saved to {save_path} at step {self.curr_step}")
+        self.checkpoint_number = new_checkpoint
 
     def load(self, file_name):
         save_path = self.save_model_dir / file_name

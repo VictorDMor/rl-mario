@@ -13,7 +13,23 @@ from wrappers import GrayScaleObservation, ResizeObservation, SkipFrame
 
 if __name__ == '__main__':
     # Initialize Super Mario environment (in v0.26 change render mode to 'human' to see results on the screen)
-    env = gym_super_mario_bros.make("SuperMarioBros-1-1-v0", render_mode='human', apply_api_compatibility=True)
+    try:
+        checkpoint_step = int(sys.argv[1])
+    except IndexError:
+        print("Please provide the checkpoint step")
+        sys.exit(1)
+
+    try:
+        render_mode = sys.argv[2]
+    except IndexError:
+        render_mode = 'rgb'
+
+    try:
+        reward_strategy = sys.argv[3] # points/x_pos/hybrid
+    except IndexError:
+        reward_strategy = 'hybrid'
+
+    env = gym_super_mario_bros.make("SuperMarioBros-1-1-v0", render_mode=render_mode, apply_api_compatibility=True)
 
     # Limit the action-space to
     #   0. walk right
@@ -27,6 +43,7 @@ if __name__ == '__main__':
 
     env = SkipFrame(env, skip=4)
     env = GrayScaleObservation(env)
+    # env = CustomRewardWrapper(env, reward_strategy)
     env = ResizeObservation(env, shape=84)
     env = FrameStack(env, num_stack=4)
 
@@ -34,23 +51,22 @@ if __name__ == '__main__':
     print(f"Using CUDA: {use_cuda}")
     print()
 
-    save_dir = Path("checkpoints") / datetime.datetime.now().strftime("%Y-%m-%dT%H-%M-%S")
+    save_dir = Path("checkpoints") / f"{datetime.datetime.now().strftime('%Y-%m-%dT%H-%M-%S')} - {reward_strategy}"
     save_model_dir = Path("model_checkpoints")
+    # save_model_dir = Path("model_checkpoints") / reward_strategy
     save_dir.mkdir(parents=True)
 
-    mario = Mario(state_dim=(4, 84, 84), action_dim=env.action_space.n, save_model_dir=save_model_dir)
-
     # get checkpoint step from sys.argv
-    if len(sys.argv) == 2:
-        checkpoint_step = sys.argv[1]
-    else:
-        checkpoint_step = 0
+    mario = Mario(
+        state_dim=(4, 84, 84), action_dim=env.action_space.n, save_model_dir=save_model_dir, checkpoint_number=checkpoint_step)
 
-    mario.load(f"mario_net_{checkpoint_step}.chkpt")
+
+    mario.load("mario_net_5.chkpt")
+    # mario.load(f"mario_net_{checkpoint_step}_{reward_strategy}.chkpt")
 
     logger = MetricLogger(save_dir)
 
-    episodes = 40_000
+    episodes = 50_000
     for e in range(episodes):
 
         state = env.reset()

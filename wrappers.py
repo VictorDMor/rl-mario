@@ -16,11 +16,11 @@ class SkipFrame(gym.Wrapper):
         total_reward = 0.0
         for i in range(self._skip):
             # Accumulate reward and repeat the same action
-            obs, reward, done, trunk, info = self.env.step(action)
+            obs, reward, done, trunc, info = self.env.step(action)
             total_reward += reward
             if done:
                 break
-        return obs, total_reward, done, trunk, info
+        return obs, total_reward, done, trunc, info
 
 
 class GrayScaleObservation(gym.ObservationWrapper):
@@ -59,3 +59,35 @@ class ResizeObservation(gym.ObservationWrapper):
         )
         observation = transforms(observation).squeeze(0)
         return observation
+
+class CustomRewardWrapper(gym.Wrapper):
+    def __init__(self, env, reward_strategy):
+        super(CustomRewardWrapper, self).__init__(env)
+        self.reward_strategy = reward_strategy
+        self.last_x_pos = 0
+
+    def reset(self, **kwargs):
+        self.last_x_pos = 0
+        return self.env.reset(**kwargs)
+
+    def step(self, action):
+        obs, reward, done, trunc, info = self.env.step(action)
+        current_x_pos = info.get('x_pos', 0)
+        points = info.get('score', 0)
+
+        if self.reward_strategy == 'points':
+            # Reward based on points
+            reward = points
+        elif self.reward_strategy == 'x_pos':
+            # Reward based on x position
+            distance_reward = current_x_pos - self.last_x_pos
+            reward = distance_reward
+        elif self.reward_strategy == 'hybrid':
+            # Hybrid approach
+            distance_reward = current_x_pos - self.last_x_pos
+            hybrid_reward = distance_reward + points
+            reward = hybrid_reward
+        
+        self.last_x_pos = current_x_pos
+        return obs, reward, done, trunc, info
+    
