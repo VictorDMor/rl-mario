@@ -8,7 +8,7 @@ from gym.wrappers import FrameStack
 from metric_logger import MetricLogger
 from nes_py.wrappers import JoypadSpace
 from pathlib import Path
-from wrappers import GrayScaleObservation, ResizeObservation, SkipFrame
+from wrappers import CustomRewardWrapper, GrayScaleObservation, ResizeObservation, SkipFrame
 
 
 if __name__ == '__main__':
@@ -25,7 +25,7 @@ if __name__ == '__main__':
         render_mode = 'rgb'
 
     try:
-        reward_strategy = sys.argv[3] # points/x_pos/hybrid
+        reward_strategy = sys.argv[3] # points/x_pos/hybrid/legacy
     except IndexError:
         reward_strategy = 'hybrid'
 
@@ -43,7 +43,10 @@ if __name__ == '__main__':
 
     env = SkipFrame(env, skip=4)
     env = GrayScaleObservation(env)
-    # env = CustomRewardWrapper(env, reward_strategy)
+
+    if reward_strategy != 'legacy':
+        env = CustomRewardWrapper(env, reward_strategy)
+        
     env = ResizeObservation(env, shape=84)
     env = FrameStack(env, num_stack=4)
 
@@ -52,8 +55,7 @@ if __name__ == '__main__':
     print()
 
     save_dir = Path("checkpoints") / f"{datetime.datetime.now().strftime('%Y-%m-%dT%H-%M-%S')} - {reward_strategy}"
-    save_model_dir = Path("model_checkpoints")
-    # save_model_dir = Path("model_checkpoints") / reward_strategy
+    save_model_dir = Path("model_checkpoints") / reward_strategy
     save_dir.mkdir(parents=True)
 
     # get checkpoint step from sys.argv
@@ -61,8 +63,7 @@ if __name__ == '__main__':
         state_dim=(4, 84, 84), action_dim=env.action_space.n, save_model_dir=save_model_dir, checkpoint_number=checkpoint_step)
 
 
-    mario.load("mario_net_5.chkpt")
-    # mario.load(f"mario_net_{checkpoint_step}_{reward_strategy}.chkpt")
+    mario.load(f"mario_net_{checkpoint_step}_{reward_strategy}.chkpt")
 
     logger = MetricLogger(save_dir)
 
