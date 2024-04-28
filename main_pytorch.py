@@ -65,7 +65,7 @@ if __name__ == '__main__':
         state_dim=(4, 84, 84), action_dim=env.action_space.n, save_model_dir=save_model_dir, checkpoint_number=checkpoint_step)
 
 
-    mario.load(f"mario_net_{checkpoint_step}_{reward_strategy}.chkpt")
+    mario.load(f"mario_net_{checkpoint_step}.chkpt")
 
     logger = MetricLogger(save_dir)
 
